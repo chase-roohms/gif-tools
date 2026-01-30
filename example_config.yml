@@ -1,0 +1,33 @@
+# Not required, leave blank if defining absolute paths to images
+# Can be an absolute path or a path relative to the config file itself
+images_base_path: example_images/
+output_gif_path: example.gif
+
+images:
+  - key: image1
+    path: 1_white_bg.png
+  - key: image2
+    path: 2_white_bg.png
+  - key: image3
+    path: 3_white_bg.png
+  - key: image4
+    path: 1_no_bg.png
+  - key: image5
+    path: 2_no_bg.png
+  - key: image6
+    path: 3_no_bg.png
+
+schedule:
+  # Key from images section and time in milliseconds
+  - image: image1
+    time: 500
+  - image: image2
+    time: 500
+  - image: image3
+    time: 500
+  - image: image4
+    time: 250
+  - image: image5
+    time: 250
+  - image: image6
+    time: 250
