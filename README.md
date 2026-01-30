@@ -10,12 +10,10 @@ I got tired of having to use confusing tools to make or edit gifs so I have crea
 
 Creates animated GIFs from PNG/JPG images using a YAML config file.
 
-<p align="center">
-  <figure align="center">
-    <img src="example.gif" alt="Example GIF output" width="30%">
-    <figcaption>Example GIF created from the example_config.yml</figcaption>
-  </figure>
-</p>
+<div align="center">
+  <img src="example.gif" alt="Example GIF output" width="30%">
+  <p><em>Example GIF created from the example_config.yml</em></p>
+</div>
 
 ## Usage
 
