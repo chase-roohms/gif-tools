@@ -1,17 +1,62 @@
 <!-- Repository Name--->
-# python-template
+# gif-tools
 
 <!-- Short Repository Description--->
-Generic template for my python projects in an effort to maintain common structure &amp; practices
+I got tired of having to use confusing tools to make or edit gifs so I have created this repository to store some Python scripts I write to manipulate gifs myself.
 
-<!-- Here is where you put generic information --->
-This can be used when creating a repository by selecting it next to "Start with a template".
 
-For more info on templates, refer to the [docs](./docs/)
+
+# Create GIFs from Images
+
+Creates animated GIFs from PNG/JPG images using a YAML config file.
+
+<p align="center">
+  <figure align="center">
+    <img src="example.gif" alt="Example GIF output" width="30%">
+    <figcaption>Example GIF created from the example_config.yml</figcaption>
+  </figure>
+</p>
+
+## Usage
+
+```bash
+python src/create_gif_from_images.py config.yml
+```
+
+Optional flags:
+- `-o, --output` - Override output path from config
+- `-v, --verbose` - Show detailed logging
+
+## Config File Format
+
+```yaml
+# Base path for images (absolute or relative to config file)
+images_base_path: ./images/
+
+# Output GIF path (absolute or relative to config file)
+output_gif_path: output.gif
+
+# Define your images
+images:
+  - key: frame1
+    path: image1.png
+  - key: frame2
+    path: image2.png
+
+# Set the schedule (time in milliseconds)
+schedule:
+  - image: frame1
+    time: 500
+  - image: frame2
+    time: 500
+  - image: frame1  # You can reuse images
+    time: 300
+```
+
+See [example_config.yml](example_config.yml) for a working example.
+
 
 ## Testing
-
-This template includes a pytest test setup for easy testing of your Python code.
 
 ### Installation
 
