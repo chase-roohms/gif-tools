@@ -147,6 +147,22 @@ class GifCreator:
             except Exception as e:
                 raise GifCreationError(f"Error loading image '{key}' from {image_path}: {e}")
         
+        # Normalize image dimensions to fit within smallest bounds
+        if image_dict:
+            min_width = min(img.width for img in image_dict.values())
+            min_height = min(img.height for img in image_dict.values())
+            logger.info(f"Normalizing images to fit within {min_width}x{min_height}")
+            
+            for key, img in image_dict.items():
+                if img.width > min_width or img.height > min_height:
+                    # Calculate scale to fit within bounds while maintaining aspect ratio
+                    scale = min(min_width / img.width, min_height / img.height)
+                    new_width = int(img.width * scale)
+                    new_height = int(img.height * scale)
+                    
+                    logger.debug(f"Resizing '{key}' from {img.width}x{img.height} to {new_width}x{new_height}")
+                    image_dict[key] = img.resize((new_width, new_height), Image.Resampling.LANCZOS)
+        
         logger.info(f"Successfully loaded {len(image_dict)} images")
         self.image_dict = image_dict
         return image_dict
