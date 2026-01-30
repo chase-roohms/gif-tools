@@ -16,18 +16,38 @@ images:
     path: 2_no_bg.png
   - key: image6
     path: 3_no_bg.png
+  - key: cat_close
+    path: cat_close.png
+  - key: cat_open
+    path: cat_open.png
 
 schedule:
   # Key from images section and time in milliseconds
   - image: image1
-    time: 500
+    time: 250
   - image: image2
-    time: 500
+    time: 250
   - image: image3
-    time: 500
+    time: 250
   - image: image4
     time: 250
   - image: image5
     time: 250
   - image: image6
     time: 250
+  - image: cat_close
+    time: 150
+  - image: cat_open
+    time: 150
+  - image: cat_close
+    time: 150
+  - image: cat_open
+    time: 150
+  - image: cat_close
+    time: 150
+  - image: cat_open
+    time: 150
+  - image: cat_close
+    time: 150
+  - image: cat_open
+    time: 150
