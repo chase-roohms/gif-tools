@@ -154,14 +154,22 @@ class GifCreator:
             logger.info(f"Normalizing images to fit within {min_width}x{min_height}")
             
             for key, img in image_dict.items():
-                if img.width > min_width or img.height > min_height:
+                if img.width != min_width or img.height != min_height:
                     # Calculate scale to fit within bounds while maintaining aspect ratio
                     scale = min(min_width / img.width, min_height / img.height)
                     new_width = int(img.width * scale)
                     new_height = int(img.height * scale)
                     
                     logger.debug(f"Resizing '{key}' from {img.width}x{img.height} to {new_width}x{new_height}")
-                    image_dict[key] = img.resize((new_width, new_height), Image.Resampling.LANCZOS)
+                    resized = img.resize((new_width, new_height), Image.Resampling.LANCZOS)
+                    
+                    # Center the resized image on a canvas of target dimensions
+                    canvas = Image.new(img.mode, (min_width, min_height), (0, 0, 0, 0) if img.mode == 'RGBA' else (255, 255, 255))
+                    x_offset = (min_width - new_width) // 2
+                    y_offset = (min_height - new_height) // 2
+                    canvas.paste(resized, (x_offset, y_offset))
+                    
+                    image_dict[key] = canvas
         
         logger.info(f"Successfully loaded {len(image_dict)} images")
         self.image_dict = image_dict
