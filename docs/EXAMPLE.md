@@ -1,1 +1,0 @@
-Here you can put more in depth documentation that would clog up the main README
